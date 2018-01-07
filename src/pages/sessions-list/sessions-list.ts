@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {NavController, NavParams} from 'ionic-angular';
 import {Session} from '../../models/session';
 import {SessionDetailPage} from '../session-detail/session-detail';
 import {DataProvider} from '../../providers/data/data';
@@ -12,7 +12,6 @@ import {DataType} from '../../models/data-type-enum';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-sessions-list',
   templateUrl: 'sessions-list.html',

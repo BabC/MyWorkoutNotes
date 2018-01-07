@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {NavController, NavParams} from 'ionic-angular';
 import {Session} from '../../models/session';
 
 /**
@@ -9,7 +9,6 @@ import {Session} from '../../models/session';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-session-detail',
   templateUrl: 'session-detail.html',

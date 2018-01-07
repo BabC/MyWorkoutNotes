@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ActionSheetController, AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {ActionSheetController, AlertController, NavController, NavParams} from 'ionic-angular';
 import {Exercise} from '../../models/exercise';
 import {DataProvider} from '../../providers/data/data';
 import {DataType} from '../../models/data-type-enum';
@@ -12,7 +12,6 @@ import {StringFormat} from '../../utils/string-format/string-format';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-exercises',
   templateUrl: 'exercises-list.html',

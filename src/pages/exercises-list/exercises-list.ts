@@ -3,7 +3,7 @@ import {ActionSheetController, AlertController, IonicPage, NavController, NavPar
 import {Exercise} from '../../models/exercise';
 import {DataProvider} from '../../providers/data/data';
 import {DataType} from '../../models/data-type-enum';
-import {StringFormat, StringFormatProvider} from '../../utils/string-format/string-format';
+import {StringFormat} from '../../utils/string-format/string-format';
 
 /**
  * Generated class for the ExercisesPage page.

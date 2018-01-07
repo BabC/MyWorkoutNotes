@@ -11,7 +11,8 @@ import {ExercisesListPage} from '../pages/exercises-list/exercises-list';
 import {SessionsListPage} from '../pages/sessions-list/sessions-list';
 import {TimerPage} from '../pages/timer/timer';
 import {SessionDetailPage} from '../pages/session-detail/session-detail';
-import { DataProvider } from '../providers/data/data';
+import {DataProvider} from '../providers/data/data';
+import {IonicStorageModule} from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DataProvider } from '../providers/data/data';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

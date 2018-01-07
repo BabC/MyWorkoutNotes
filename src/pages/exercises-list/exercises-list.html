@@ -14,5 +14,8 @@
 
 
 <ion-content padding>
-
+  <button ion-button full (click)="addExercise()">Add exercise</button>
+  <ion-list>
+    <ion-item *ngFor="let e of exercises" (click)="showMenu(e)">{{e.name}}</ion-item>
+  </ion-list>
 </ion-content>

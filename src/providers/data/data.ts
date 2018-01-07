@@ -1,4 +1,6 @@
 import {Injectable} from '@angular/core';
+import {DataType} from '../../models/data-type-enum';
+import {Storage} from '@ionic/storage';
 
 /*
   Generated class for the DataProvider provider.
@@ -13,12 +15,12 @@ export class DataProvider {
 
   }
 
-  getData() {
-    return this.storage.get('data');
+  getData(dataType: DataType) {
+    return this.storage.get(dataType.toString());
   }
 
-  save(data) {
-    this.storage.set('data', data);
+  saveData(dataType: DataType, data: any) {
+    this.storage.set(dataType.toString(), data);
   }
 
 }

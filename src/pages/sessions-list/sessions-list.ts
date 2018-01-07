@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Session} from '../../models/session';
 import {SessionDetailPage} from '../session-detail/session-detail';
+import {DataProvider} from '../../providers/data/data';
+import {DataType} from '../../models/data-type-enum';
 
 /**
  * Generated class for the SessionsPage page.
@@ -19,10 +21,20 @@ export class SessionsListPage {
 
   public sessions: Session[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              private dataService: DataProvider) {
   }
 
   ionViewDidLoad() {
+    this.dataService.getData(DataType.SESSION).then((sessions) => {
+
+      if (sessions) {
+        this.sessions = sessions;
+      }
+
+    });
+
+    // TODO : remove with storage
     this.sessions = [
       {exercises: [{name: 'Squat'}, {name: 'Soulevé'}, {name: 'Squat'}]},
       {exercises: [{name: 'Tirage'}]},

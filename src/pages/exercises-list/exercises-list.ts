@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 
 /**
  * Generated class for the ExercisesPage page.
@@ -11,9 +11,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 @IonicPage()
 @Component({
   selector: 'page-exercises',
-  templateUrl: 'exercises.html',
+  templateUrl: 'exercises-list.html',
 })
-export class ExercisesPage {
+export class ExercisesListPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

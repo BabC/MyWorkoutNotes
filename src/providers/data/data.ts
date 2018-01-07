@@ -14,11 +14,11 @@ export class DataProvider {
   }
 
   getData() {
-    return this.storage.get('sessions');
+    return this.storage.get('data');
   }
 
   save(data) {
-    this.storage.set('sessions', data);
+    this.storage.set('data', data);
   }
 
 }

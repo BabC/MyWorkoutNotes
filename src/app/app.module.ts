@@ -7,7 +7,7 @@ import {TabsPage} from '../pages/tabs/tabs';
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
-import {ExercisesPage} from '../pages/exercises/exercises';
+import {ExercisesListPage} from '../pages/exercises-list/exercises-list';
 import {SessionsListPage} from '../pages/sessions-list/sessions-list';
 import {TimerPage} from '../pages/timer/timer';
 import {SessionDetailPage} from '../pages/session-detail/session-detail';
@@ -18,7 +18,7 @@ import { DataProvider } from '../providers/data/data';
     MyApp,
     TabsPage,
     SessionsListPage,
-    ExercisesPage,
+    ExercisesListPage,
     TimerPage,
     SessionDetailPage
   ],
@@ -31,7 +31,7 @@ import { DataProvider } from '../providers/data/data';
     MyApp,
     TabsPage,
     SessionsListPage,
-    ExercisesPage,
+    ExercisesListPage,
     TimerPage,
     SessionDetailPage
   ],

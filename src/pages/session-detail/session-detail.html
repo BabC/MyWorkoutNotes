@@ -1,0 +1,18 @@
+<!--
+  Generated template for the SessionDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Detail</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item *ngFor="let e of session?.exercises">{{e.name}}</ion-item>
+</ion-content>

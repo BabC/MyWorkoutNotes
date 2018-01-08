@@ -13,6 +13,7 @@ import {TimerPage} from '../pages/timer/timer';
 import {SessionDetailPage} from '../pages/session-detail/session-detail';
 import {DataProvider} from '../providers/data/data';
 import {IonicStorageModule} from '@ionic/storage';
+import {NewSessionPage} from "../pages/new-session/new-session";
 
 @NgModule({
   declarations: [
@@ -21,11 +22,14 @@ import {IonicStorageModule} from '@ionic/storage';
     SessionsListPage,
     ExercisesListPage,
     TimerPage,
-    SessionDetailPage
+    SessionDetailPage,
+    NewSessionPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      tabsHideOnSubPages: true,
+    }),
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
@@ -35,7 +39,8 @@ import {IonicStorageModule} from '@ionic/storage';
     SessionsListPage,
     ExercisesListPage,
     TimerPage,
-    SessionDetailPage
+    SessionDetailPage,
+    NewSessionPage
   ],
   providers: [
     StatusBar,

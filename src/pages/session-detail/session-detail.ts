@@ -22,7 +22,6 @@ export class SessionDetailPage {
 
   ionViewDidLoad() {
     this.session = this.navParams.get('session');
-    console.log(this.session)
   }
 
 }

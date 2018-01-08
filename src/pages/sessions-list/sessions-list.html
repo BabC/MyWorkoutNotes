@@ -8,7 +8,7 @@
 
 
 <ion-content padding>
-  <button ion-button full>Add session</button>
+  <button ion-button full (click)="addNewSession()">Add session</button>
   <ion-list>
     <ion-item *ngFor="let s of sessions; let i = index" [attr.data-index]="i" (click)="viewSession(s)">Session {{i}}
     </ion-item>

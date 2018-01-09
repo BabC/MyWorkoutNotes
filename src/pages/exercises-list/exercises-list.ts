@@ -61,7 +61,6 @@ export class ExercisesListPage {
     this.dataService.getData(DataType.EXERCISE).then((exercises) => {
       if (exercises) {
         this.exercises = exercises as Exercise[];
-        this.sortExercises();
       }
     });
   }

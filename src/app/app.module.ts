@@ -13,7 +13,8 @@ import {TimerPage} from '../pages/timer/timer';
 import {SessionDetailPage} from '../pages/session-detail/session-detail';
 import {DataProvider} from '../providers/data/data';
 import {IonicStorageModule} from '@ionic/storage';
-import {NewSessionPage} from "../pages/new-session/new-session";
+import {NewSessionPage} from '../pages/new-session/new-session';
+import {ModalAddExercisePage} from '../pages/modal-add-exercise/modal-add-exercise';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {NewSessionPage} from "../pages/new-session/new-session";
     ExercisesListPage,
     TimerPage,
     SessionDetailPage,
-    NewSessionPage
+    NewSessionPage,
+    ModalAddExercisePage
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ import {NewSessionPage} from "../pages/new-session/new-session";
     ExercisesListPage,
     TimerPage,
     SessionDetailPage,
-    NewSessionPage
+    NewSessionPage,
+    ModalAddExercisePage
   ],
   providers: [
     StatusBar,

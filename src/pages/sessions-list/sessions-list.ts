@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {ActionSheetController, NavController} from 'ionic-angular';
 import {Session} from '../../models/session';
 import {SessionDetailPage} from '../session-detail/session-detail';
 import {DataProvider} from '../../providers/data/data';
@@ -21,8 +21,9 @@ export class SessionsListPage {
 
   public sessions: Session[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-              private dataService: DataProvider) {
+  constructor(private navCtrl: NavController,
+              private dataService: DataProvider,
+              private actionSheetCtrl: ActionSheetController) {
   }
 
   ionViewDidLoad() {
@@ -33,15 +34,6 @@ export class SessionsListPage {
         this.sessions = sessions;
       }
     });
-
-    // TODO : remove with storage
-    /*
-    this.sessions = [
-      {exercises: [{name: 'Squat'}, {name: 'Soulevé'}, {name: 'Squat'}]},
-      {exercises: [{name: 'Tirage'}]},
-      {exercises: [{name: 'Fente'}, {name: 'Montée sur banc'}]},
-      {exercises: [{name: 'Epaules'}, {name: 'Dos'}, {name: 'Bras'}]},
-    ]*/
   }
 
   viewSession(session) {
@@ -52,7 +44,47 @@ export class SessionsListPage {
 
   addNewSession() {
     this.navCtrl.push(NewSessionPage, {
-      sessions: this.sessions
+      callback: this.callbackSaveNewSession
     });
+  }
+
+  callbackSaveNewSession = (_params) => {
+    return new Promise((resolve, reject) => {
+      this.sessions.push(_params as Session);
+      this.saveData();
+      resolve();
+    });
+  }
+
+  showMenu(session: Session) {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Actions on session',
+      buttons: [
+        {
+          text: 'Details',
+          role: 'destructive',
+          icon: 'eye',
+          handler: () => {
+            this.viewSession(session);
+          }
+        }, {
+          text: 'Delete',
+          role: 'destructive',
+          icon: 'trash',
+          handler: () => {
+            const index = this.sessions.indexOf(session)
+            if (index >= 0) {
+              this.sessions.splice(index, 1);
+              this.saveData();
+            }
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
+  saveData() {
+    this.dataService.saveData(DataType.SESSION, this.sessions);
   }
 }

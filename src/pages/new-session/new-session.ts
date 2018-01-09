@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {ModalController, NavController, NavParams} from 'ionic-angular';
 import {Session} from '../../models/session';
-import {DataProvider} from "../../providers/data/data";
+import {DataProvider} from '../../providers/data/data';
 import {DataType} from '../../models/data-type-enum';
+import {ModalAddExercisePage} from '../modal-add-exercise/modal-add-exercise';
 
 /**
  * Generated class for the NewSessionPage page.
@@ -17,27 +18,28 @@ import {DataType} from '../../models/data-type-enum';
 })
 export class NewSessionPage {
 
-  public newSession: Session;
-  public sessions: Session[] = [];
+  public newSession: Session = {exercises: []};
+  public callback: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-              private   dataService: DataProvider) {
+  constructor(private navCtrl: NavController,
+              private navParams: NavParams,
+              private dataService: DataProvider,
+              private modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
-    this.newSession = {exercises: []};
-    this.sessions = this.navParams.get('sessions');
+    this.callback = this.navParams.get('callback')
+  }
+
+  addExercise() {
+    let modal = this.modalCtrl.create(ModalAddExercisePage);
+    modal.onDidDismiss((data) => this.newSession.exercises.push(data));
+    modal.present();
   }
 
   validateNewSession() {
-    // TODO : remove
-    this.newSession.exercises.push({name: 'Squat' + Math.floor(Math.random() * 6) + 1});
-
-
-    this.sessions.push(this.newSession as Session);
-    this.dataService.saveData(DataType.SESSION, this.sessions);
-
-    this.navCtrl.pop();
-
+    this.callback(this.newSession).then(() => {
+      this.navCtrl.pop();
+    });
   }
 }

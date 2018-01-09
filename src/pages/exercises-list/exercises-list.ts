@@ -61,13 +61,20 @@ export class ExercisesListPage {
     this.dataService.getData(DataType.EXERCISE).then((exercises) => {
       if (exercises) {
         this.exercises = exercises as Exercise[];
+        this.sortExercises();
       }
     });
   }
 
-  private saveData() {
-    this.dataService.saveData(DataType.EXERCISE, this.exercises);
+  private sortExercises() {
+    this.exercises.sort((a, b) => {
+      return a.name < b.name ? -1 : 1;
+    });
+  }
 
+  private saveData() {
+    this.sortExercises();
+    this.dataService.saveData(DataType.EXERCISE, this.exercises);
   }
 
   showMenu(exercise: Exercise) {

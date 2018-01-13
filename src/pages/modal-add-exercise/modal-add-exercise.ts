@@ -29,7 +29,6 @@ export class ModalAddExercisePage {
   }
 
   dismiss(exercise: Exercise) {
-    console.log(exercise);
     this.viewCtrl.dismiss(exercise);
   }
 }

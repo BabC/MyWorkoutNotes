@@ -15,6 +15,7 @@ import {DataProvider} from '../providers/data/data';
 import {IonicStorageModule} from '@ionic/storage';
 import {NewSessionPage} from '../pages/new-session/new-session';
 import {ModalAddExercisePage} from '../pages/modal-add-exercise/modal-add-exercise';
+import {ModalAddRestPage} from '../pages/modal-add-rest/modal-add-rest';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {ModalAddExercisePage} from '../pages/modal-add-exercise/modal-add-exerci
     TimerPage,
     SessionDetailPage,
     NewSessionPage,
-    ModalAddExercisePage
+    ModalAddExercisePage,
+    ModalAddRestPage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ import {ModalAddExercisePage} from '../pages/modal-add-exercise/modal-add-exerci
     TimerPage,
     SessionDetailPage,
     NewSessionPage,
-    ModalAddExercisePage
+    ModalAddExercisePage,
+    ModalAddRestPage
   ],
   providers: [
     StatusBar,

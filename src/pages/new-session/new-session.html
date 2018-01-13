@@ -13,11 +13,12 @@
 
 
 <ion-content padding>
-  <button ion-button full (click)="addExercise()">Add Exercise</button>
-  <button ion-button color="secondary" full (click)="addRest()">Add Rest</button>
-
+  <div class="add-buttons">
+    <button ion-button class="button-50" (click)="addExercise()">Add Exercise</button>
+    <button ion-button color="secondary" class="button-50" (click)="addRest()">Add Rest</button>
+  </div>
   <ion-list>
-    <ion-item *ngFor="let e of newSession.exercises">{{e.name}}</ion-item>
+    <ion-item *ngFor="let e of newSession.exercises" (click)="editExercise(e)">{{e.name}}</ion-item>
   </ion-list>
 </ion-content>
 

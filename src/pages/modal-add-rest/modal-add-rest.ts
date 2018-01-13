@@ -23,6 +23,10 @@ export class ModalAddRestPage {
 
   }
 
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
+
   validateRest() {
     this.viewCtrl.dismiss(this.restTime);
   }

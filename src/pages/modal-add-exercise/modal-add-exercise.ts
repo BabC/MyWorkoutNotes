@@ -28,7 +28,7 @@ export class ModalAddExercisePage {
     });
   }
 
-  dismiss(exercise: Exercise) {
+  dismiss(exercise?: Exercise) {
     this.viewCtrl.dismiss(exercise);
   }
 }

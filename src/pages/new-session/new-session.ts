@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AlertController, ModalController, NavController, NavParams} from 'ionic-angular';
+import {ActionSheetController, ModalController, NavController, NavParams} from 'ionic-angular';
 import {Session} from '../../models/session';
 import {ModalAddExercisePage} from '../modal-add-exercise/modal-add-exercise';
 import {ModalAddRestPage} from '../modal-add-rest/modal-add-rest';
@@ -24,7 +24,7 @@ export class NewSessionPage {
   constructor(private navCtrl: NavController,
               private navParams: NavParams,
               private modalCtrl: ModalController,
-              private alertCtrl: AlertController) {
+              private actionSheetCtrl: ActionSheetController) {
   }
 
   ionViewDidLoad() {
@@ -33,19 +33,45 @@ export class NewSessionPage {
 
   addExercise() {
     let modal = this.modalCtrl.create(ModalAddExercisePage);
-    modal.onDidDismiss((data) => this.newSession.exercises.push(data));
+    modal.onDidDismiss((data) => {
+        if (data) {
+          this.newSession.exercises.push(data)
+        }
+      }
+    );
     modal.present();
   }
 
   addRest() {
     let modal = this.modalCtrl.create(ModalAddRestPage);
     modal.onDidDismiss((data) => {
-      const rest: Exercise = {
-        name: 'Rest - ' + data
+      if (data) {
+        const rest: Exercise = {
+          name: 'Rest - ' + data
+        }
+        this.newSession.exercises.push(rest);
       }
-      this.newSession.exercises.push(rest);
     });
     modal.present();
+  }
+
+  editExercise(exercise: Exercise) {
+    let actionSheet = this.actionSheetCtrl.create({
+      buttons: [
+        {
+          text: 'Delete',
+          role: 'destructive',
+          icon: 'trash',
+          handler: () => {
+            const index = this.newSession.exercises.indexOf(exercise)
+            if (index >= 0) {
+              this.newSession.exercises.splice(index, 1);
+            }
+          }
+        }
+      ]
+    });
+    actionSheet.present();
   }
 
   validateNewSession() {

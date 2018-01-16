@@ -8,9 +8,17 @@
 
 
 <ion-content padding>
-  <button ion-button full (click)="addNewSession()">Add session</button>
   <ion-list>
-    <ion-item *ngFor="let s of sessions; let i = index" [attr.data-index]="i" (click)="showMenu(s)">Session n°{{i+1}}
-    </ion-item>
+    <button ion-item *ngFor="let s of sessions; let i = index" [attr.data-index]="i" (click)="viewSession(s)">
+      <ion-label>Session {{s?.name}}</ion-label>
+    </button>
   </ion-list>
+  <ion-item *ngIf="sessions?.length===0">
+    No session
+  </ion-item>
+  <ion-fab bottom right>
+    <button ion-fab (click)="addNewSession()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>

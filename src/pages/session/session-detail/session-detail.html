@@ -7,12 +7,30 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Detail</ion-title>
+    <ion-title>Detail {{session?.name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-item *ngFor="let e of session?.exercises">{{e.name}}</ion-item>
+  <ion-item class="exercise" *ngFor="let e of session?.exercises" [ngClass]="{'rest': e.isRest}">{{e.name}}</ion-item>
+  <ion-fab bottom right>
+    <button ion-fab>
+      <ion-icon name="ios-settings"></ion-icon>
+    </button>
+<!--    <ion-fab-list side="top">
+      <button ion-fab>
+        <ion-icon name="play"></ion-icon>
+      </button>
+    </ion-fab-list>-->
+    <ion-fab-list side="left">
+      <button ion-fab (click)="deleteSession()">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+      <!--<button ion-fab>
+        <ion-icon name="md-create"></ion-icon>
+      </button>-->
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>

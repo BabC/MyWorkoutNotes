@@ -14,7 +14,7 @@ import {StringFormat} from '../../../utils/string-format/string-format';
 
 @Component({
   selector: 'page-exercises',
-  templateUrl: 'exercises-list.html',
+  templateUrl: 'exercises-list.html'
 })
 export class ExercisesListPage {
 
@@ -48,7 +48,9 @@ export class ExercisesListPage {
           text: 'Add',
           handler: data => {
             data.name = StringFormat.capitalize(data.name);
-            this.exercises.push({name: data.name} as Exercise);
+            this.exercises.push({
+              name: data.name, isRest: false
+            }as Exercise);
             this.saveData();
           }
         }

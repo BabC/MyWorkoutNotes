@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ActionSheetController, NavController} from 'ionic-angular';
+import {NavController} from 'ionic-angular';
 import {Session} from '../../../models/session';
 import {SessionDetailPage} from '../session-detail/session-detail';
 import {DataProvider} from '../../../providers/data/data';
@@ -22,8 +22,7 @@ export class SessionsListPage {
   public sessions: Session[];
 
   constructor(private navCtrl: NavController,
-              private dataService: DataProvider,
-              private actionSheetCtrl: ActionSheetController) {
+              private dataService: DataProvider) {
   }
 
   ionViewDidLoad() {
@@ -38,7 +37,8 @@ export class SessionsListPage {
 
   viewSession(session) {
     this.navCtrl.push(SessionDetailPage, {
-      session: session
+      session: session,
+      deleteCallback: this.callbackDeleteSession
     });
   }
 
@@ -54,35 +54,19 @@ export class SessionsListPage {
       this.saveData();
       resolve();
     });
-  }
+  };
 
-  showMenu(session: Session) {
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'Actions on session',
-      buttons: [
-        {
-          text: 'Details',
-          role: 'destructive',
-          icon: 'eye',
-          handler: () => {
-            this.viewSession(session);
-          }
-        }, {
-          text: 'Delete',
-          role: 'destructive',
-          icon: 'trash',
-          handler: () => {
-            const index = this.sessions.indexOf(session)
-            if (index >= 0) {
-              this.sessions.splice(index, 1);
-              this.saveData();
-            }
-          }
+  callbackDeleteSession = (_params) => {
+    return new Promise((resolve, reject) => {
+        const index = this.sessions.indexOf(_params as Session);
+        if (index >= 0) {
+          this.sessions.splice(index, 1);
+          this.saveData();
         }
-      ]
-    });
-    actionSheet.present();
-  }
+        resolve();
+      }
+    );
+  };
 
   saveData() {
     this.dataService.saveData(DataType.SESSION, this.sessions);

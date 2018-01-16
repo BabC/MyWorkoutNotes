@@ -18,7 +18,7 @@ import {Exercise} from '../../../models/exercise';
 })
 export class NewSessionPage {
 
-  public newSession: Session = {exercises: []};
+  public newSession: Session = {name: '', exercises: []};
   public callback: any;
 
   constructor(private navCtrl: NavController,
@@ -28,7 +28,7 @@ export class NewSessionPage {
   }
 
   ionViewDidLoad() {
-    this.callback = this.navParams.get('callback')
+    this.callback = this.navParams.get('callback');
   }
 
   addExercise() {
@@ -47,9 +47,11 @@ export class NewSessionPage {
     modal.onDidDismiss((data) => {
       if (data) {
         const rest: Exercise = {
-          name: 'Rest - ' + data
-        }
+          name: 'Rest - ' + data,
+          isRest: true
+        };
         this.newSession.exercises.push(rest);
+        console.log(this.newSession);
       }
     });
     modal.present();
@@ -75,8 +77,13 @@ export class NewSessionPage {
   }
 
   validateNewSession() {
+    this.newSession.name = this.newSession.name.trim();
     this.callback(this.newSession).then(() => {
       this.navCtrl.pop();
     });
+  }
+
+  isValideSession(): boolean {
+    return this.newSession.exercises.length !== 0 && this.newSession.name.trim() !== '';
   }
 }

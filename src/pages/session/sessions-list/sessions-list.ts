@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {ActionSheetController, NavController} from 'ionic-angular';
-import {Session} from '../../models/session';
+import {Session} from '../../../models/session';
 import {SessionDetailPage} from '../session-detail/session-detail';
-import {DataProvider} from '../../providers/data/data';
-import {DataType} from '../../models/data-type-enum';
+import {DataProvider} from '../../../providers/data/data';
+import {DataType} from '../../../models/data-type-enum';
 import {NewSessionPage} from '../new-session/new-session';
 
 /**

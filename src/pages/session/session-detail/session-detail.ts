@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
-import {Session} from '../../models/session';
+import {Session} from '../../../models/session';
 
 /**
  * Generated class for the SessionDetailPage page.

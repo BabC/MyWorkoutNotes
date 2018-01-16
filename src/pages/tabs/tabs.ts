@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {SessionsListPage} from '../sessions-list/sessions-list';
+import {SessionsListPage} from '../session/sessions-list/sessions-list';
 import {TimerPage} from '../timer/timer';
-import {ExercisesListPage} from '../exercises-list/exercises-list';
+import {ExercisesListPage} from '../exercise/exercises-list/exercises-list';
 
 @Component({
   templateUrl: 'tabs.html'

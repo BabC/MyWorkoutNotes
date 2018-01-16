@@ -7,15 +7,15 @@ import {TabsPage} from '../pages/tabs/tabs';
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
-import {ExercisesListPage} from '../pages/exercises-list/exercises-list';
-import {SessionsListPage} from '../pages/sessions-list/sessions-list';
+import {ExercisesListPage} from '../pages/exercise/exercises-list/exercises-list';
+import {SessionsListPage} from '../pages/session/sessions-list/sessions-list';
 import {TimerPage} from '../pages/timer/timer';
-import {SessionDetailPage} from '../pages/session-detail/session-detail';
+import {SessionDetailPage} from '../pages/session/session-detail/session-detail';
 import {DataProvider} from '../providers/data/data';
 import {IonicStorageModule} from '@ionic/storage';
-import {NewSessionPage} from '../pages/new-session/new-session';
-import {ModalAddExercisePage} from '../pages/modal-add-exercise/modal-add-exercise';
-import {ModalAddRestPage} from '../pages/modal-add-rest/modal-add-rest';
+import {NewSessionPage} from '../pages/session/new-session/new-session';
+import {ModalAddExercisePage} from '../pages/session/modal-add-exercise/modal-add-exercise';
+import {ModalAddRestPage} from '../pages/session/modal-add-rest/modal-add-rest';
 
 @NgModule({
   declarations: [

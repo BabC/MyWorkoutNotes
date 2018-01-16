@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {ViewController} from 'ionic-angular';
-import {Exercise} from '../../models/exercise';
-import {DataType} from '../../models/data-type-enum';
-import {DataProvider} from '../../providers/data/data';
+import {Exercise} from '../../../models/exercise';
+import {DataType} from '../../../models/data-type-enum';
+import {DataProvider} from '../../../providers/data/data';
 
 /**
  * Generated class for the ModalAddExercisePage page.

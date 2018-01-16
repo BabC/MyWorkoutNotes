@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {ActionSheetController, ModalController, NavController, NavParams} from 'ionic-angular';
-import {Session} from '../../models/session';
+import {Session} from '../../../models/session';
 import {ModalAddExercisePage} from '../modal-add-exercise/modal-add-exercise';
 import {ModalAddRestPage} from '../modal-add-rest/modal-add-rest';
-import {Exercise} from '../../models/exercise';
+import {Exercise} from '../../../models/exercise';
 
 /**
  * Generated class for the NewSessionPage page.

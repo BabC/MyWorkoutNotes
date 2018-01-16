@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {ActionSheetController, AlertController, NavController, NavParams} from 'ionic-angular';
-import {Exercise} from '../../models/exercise';
-import {DataProvider} from '../../providers/data/data';
-import {DataType} from '../../models/data-type-enum';
-import {StringFormat} from '../../utils/string-format/string-format';
+import {Exercise} from '../../../models/exercise';
+import {DataProvider} from '../../../providers/data/data';
+import {DataType} from '../../../models/data-type-enum';
+import {StringFormat} from '../../../utils/string-format/string-format';
 
 /**
  * Generated class for the ExercisesPage page.

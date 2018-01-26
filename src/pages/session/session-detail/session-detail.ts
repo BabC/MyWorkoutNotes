@@ -1,6 +1,9 @@
 import {Component} from '@angular/core';
 import {AlertController, NavController, NavParams} from 'ionic-angular';
 import {Session} from '../../../models/session';
+import {NewSessionPage} from '../new-session/new-session';
+import {DataProvider} from '../../../providers/data/data';
+import {DataType} from '../../../models/data-type-enum';
 
 /**
  * Generated class for the SessionDetailPage page.
@@ -20,7 +23,8 @@ export class SessionDetailPage {
 
   constructor(private navCtrl: NavController,
               private navParams: NavParams,
-              private alertCtrl: AlertController) {
+              private alertCtrl: AlertController,
+              private dataService: DataProvider) {
   }
 
   ionViewDidLoad() {
@@ -51,4 +55,23 @@ export class SessionDetailPage {
     });
     alert.present();
   }
+
+  editSession() {
+    this.navCtrl.push(NewSessionPage, {
+      callback: this.callbackSaveEditSession,
+      session: this.session
+    });
+  }
+
+  callbackSaveEditSession = (_params) => {
+    return new Promise((resolve, reject) => {
+      this.dataService.getData(DataType.SESSION).then((sessions: Session[]) => {
+        const index = sessions.indexOf(this.session);
+        sessions[index] = _params;
+        this.session = _params;
+        this.dataService.saveData(DataType.SESSION, sessions);
+      });
+      resolve();
+    });
+  };
 }

@@ -21,7 +21,7 @@
     <ion-label color="primary" floating>Session's name</ion-label>
     <ion-input [(ngModel)]="newSession.name"></ion-input>
   </ion-item>
-  <ion-list>
+  <ion-list reorder="true" (ionItemReorder)="reorderItems($event)">
     <ion-item class="exercise" *ngFor="let e of newSession.exercises" (click)="editExercise(e)"
               [ngClass]="{'rest': e.isRest}">{{e.name}}
     </ion-item>

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ActionSheetController, ModalController, NavController, NavParams} from 'ionic-angular';
+import {ActionSheetController, ModalController, NavController, NavParams, reorderArray} from 'ionic-angular';
 import {Session} from '../../../models/session';
 import {ModalAddExercisePage} from '../modal-add-exercise/modal-add-exercise';
 import {ModalAddRestPage} from '../modal-add-rest/modal-add-rest';
@@ -18,7 +18,7 @@ import {Exercise} from '../../../models/exercise';
 })
 export class NewSessionPage {
 
-  public newSession: Session = {name: '', exercises: []};
+  public newSession: Session = {id: 0, name: '', exercises: []};
   public callback: any;
 
   constructor(private navCtrl: NavController,
@@ -29,6 +29,10 @@ export class NewSessionPage {
 
   ionViewDidLoad() {
     this.callback = this.navParams.get('callback');
+    const sessionEdit = this.navParams.get('session');
+    if (sessionEdit) {
+      this.newSession = sessionEdit;
+    }
   }
 
   addExercise() {
@@ -85,5 +89,13 @@ export class NewSessionPage {
 
   isValideSession(): boolean {
     return this.newSession.exercises.length !== 0 && this.newSession.name.trim() !== '';
+  }
+
+  reorderItems(indexes) {
+    this.newSession.exercises = reorderArray(this.newSession.exercises, indexes);
+   /* let element = this.newSession.exercises[indexes.from];
+    this..newSession.exercises.splice(indexes.from, 1);
+    this..newSession.exercises.splice(indexes.to, 0, element);*/
+
   }
 }

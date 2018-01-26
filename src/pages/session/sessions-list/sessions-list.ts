@@ -31,6 +31,11 @@ export class SessionsListPage {
     this.dataService.getData(DataType.SESSION).then((sessions) => {
       if (sessions) {
         this.sessions = sessions;
+        this.sessions.forEach((s: Session) => {
+          if (!s.id) {
+            s.id = this.findHighestIdSession() + 1;
+          }
+        })
       }
     });
   }
@@ -50,6 +55,7 @@ export class SessionsListPage {
 
   callbackSaveNewSession = (_params) => {
     return new Promise((resolve, reject) => {
+      _params.id = this.findHighestIdSession() + 1;
       this.sessions.push(_params as Session);
       this.saveData();
       resolve();
@@ -70,5 +76,15 @@ export class SessionsListPage {
 
   saveData() {
     this.dataService.saveData(DataType.SESSION, this.sessions);
+  }
+
+  findHighestIdSession(): number {
+    let maxId = 0;
+    this.sessions.forEach((s: Session) => {
+      if (s.id) {
+        maxId = Math.max(maxId, s.id)
+      }
+    });
+    return maxId;
   }
 }

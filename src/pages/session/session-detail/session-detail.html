@@ -19,18 +19,18 @@
     <button ion-fab>
       <ion-icon name="ios-settings"></ion-icon>
     </button>
-<!--    <ion-fab-list side="top">
-      <button ion-fab>
-        <ion-icon name="play"></ion-icon>
-      </button>
-    </ion-fab-list>-->
+    <!--    <ion-fab-list side="top">
+          <button ion-fab>
+            <ion-icon name="play"></ion-icon>
+          </button>
+        </ion-fab-list>-->
     <ion-fab-list side="left">
       <button ion-fab (click)="deleteSession()">
         <ion-icon name="trash"></ion-icon>
       </button>
-      <!--<button ion-fab>
+      <button ion-fab (click)="editSession()">
         <ion-icon name="md-create"></ion-icon>
-      </button>-->
+      </button>
     </ion-fab-list>
   </ion-fab>
 </ion-content>

@@ -49,7 +49,7 @@ export class ExercisesListPage {
           handler: data => {
             data.name = StringFormat.capitalize(data.name);
             this.exercises.push({
-              name: data.name, isRest: false
+              name: data.name
             }as Exercise);
             this.saveData();
           }

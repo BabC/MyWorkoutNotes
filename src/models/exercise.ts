@@ -1,4 +1,6 @@
 export interface Exercise {
   name: string;
-  isRest: boolean;
+  repetition?: number;
+  set?: number;
+  rest?: string;
 }

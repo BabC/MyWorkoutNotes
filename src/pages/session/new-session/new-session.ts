@@ -4,6 +4,7 @@ import {Session} from '../../../models/session';
 import {ModalAddExercisePage} from '../modal-add-exercise/modal-add-exercise';
 import {ModalAddRestPage} from '../modal-add-rest/modal-add-rest';
 import {Exercise} from '../../../models/exercise';
+import {AddExercisePage} from "../../add-exercise/add-exercise";
 
 /**
  * Generated class for the NewSessionPage page.
@@ -36,17 +37,18 @@ export class NewSessionPage {
   }
 
   addExercise() {
-    let modal = this.modalCtrl.create(ModalAddExercisePage);
+/*    let modal = this.modalCtrl.create(ModalAddExercisePage);
     modal.onDidDismiss((data) => {
         if (data) {
           this.newSession.exercises.push(data)
         }
       }
     );
-    modal.present();
+    modal.present();*/
+      this.navCtrl.push(AddExercisePage, {    });
   }
 
-  addRest() {
+ /* addRest() {
     let modal = this.modalCtrl.create(ModalAddRestPage);
     modal.onDidDismiss((data) => {
       if (data) {
@@ -59,7 +61,7 @@ export class NewSessionPage {
       }
     });
     modal.present();
-  }
+  }*/
 
   editExercise(exercise: Exercise) {
     let actionSheet = this.actionSheetCtrl.create({
@@ -93,9 +95,5 @@ export class NewSessionPage {
 
   reorderItems(indexes) {
     this.newSession.exercises = reorderArray(this.newSession.exercises, indexes);
-   /* let element = this.newSession.exercises[indexes.from];
-    this..newSession.exercises.splice(indexes.from, 1);
-    this..newSession.exercises.splice(indexes.to, 0, element);*/
-
   }
 }

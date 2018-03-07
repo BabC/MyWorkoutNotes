@@ -16,6 +16,7 @@ import {IonicStorageModule} from '@ionic/storage';
 import {NewSessionPage} from '../pages/session/new-session/new-session';
 import {ModalAddExercisePage} from '../pages/session/modal-add-exercise/modal-add-exercise';
 import {ModalAddRestPage} from '../pages/session/modal-add-rest/modal-add-rest';
+import {AddExercisePage} from '../pages/add-exercise/add-exercise'
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {ModalAddRestPage} from '../pages/session/modal-add-rest/modal-add-rest';
     SessionDetailPage,
     NewSessionPage,
     ModalAddExercisePage,
-    ModalAddRestPage
+    ModalAddRestPage,
+    AddExercisePage
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,8 @@ import {ModalAddRestPage} from '../pages/session/modal-add-rest/modal-add-rest';
     SessionDetailPage,
     NewSessionPage,
     ModalAddExercisePage,
-    ModalAddRestPage
+    ModalAddRestPage,
+    AddExercisePage
   ],
   providers: [
     StatusBar,

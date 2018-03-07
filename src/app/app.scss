@@ -15,11 +15,6 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 .exercise {
-  &.rest {
-    .item-inner {
-      background-color: #32db64;
-    }
-  }
   .item-inner {
     padding-left: 8px;
   }

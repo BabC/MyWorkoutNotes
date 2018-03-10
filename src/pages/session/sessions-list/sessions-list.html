@@ -10,7 +10,7 @@
 <ion-content padding>
   <ion-list>
     <button ion-item *ngFor="let s of sessions; let i = index" [attr.data-index]="i" (click)="viewSession(s)">
-      <ion-label>Session {{s?.name}}</ion-label>
+      <ion-label>{{s?.name}}</ion-label>
     </button>
   </ion-list>
   <ion-item *ngIf="sessions?.length===0">

@@ -4,7 +4,6 @@ import {Session} from '../../../models/session';
 import {SessionDetailPage} from '../session-detail/session-detail';
 import {DataProvider} from '../../../providers/data/data';
 import {DataType} from '../../../models/data-type-enum';
-import {NewSessionPage} from '../new-session/new-session';
 
 /**
  * Generated class for the SessionsPage page.
@@ -28,16 +27,11 @@ export class SessionsListPage {
   ionViewDidLoad() {
     this.sessions = [];
 
-    this.dataService.getData(DataType.SESSION).then((sessions) => {
-      if (sessions) {
-        this.sessions = sessions;
-        this.sessions.forEach((s: Session) => {
-          if (!s.id) {
-            s.id = this.findHighestIdSession() + 1;
-          }
-        })
-      }
-    });
+    this.updateData();
+  }
+
+  ionViewWillEnter() {
+    this.updateData();
   }
 
   viewSession(session) {
@@ -48,19 +42,16 @@ export class SessionsListPage {
   }
 
   addNewSession() {
-    this.navCtrl.push(NewSessionPage, {
-      callback: this.callbackSaveNewSession
+    const idTmp = this.findHighestIdSession() + 1;
+    this.navCtrl.push(SessionDetailPage, {
+      session: {
+        id: idTmp,
+        name: 'Session ' + idTmp,
+        exercises: []
+      },
+      deleteCallback: this.callbackDeleteSession
     });
   }
-
-  callbackSaveNewSession = (_params) => {
-    return new Promise((resolve, reject) => {
-      _params.id = this.findHighestIdSession() + 1;
-      this.sessions.push(_params as Session);
-      this.saveData();
-      resolve();
-    });
-  };
 
   callbackDeleteSession = (_params) => {
     return new Promise((resolve, reject) => {
@@ -73,6 +64,20 @@ export class SessionsListPage {
       }
     );
   };
+
+  updateData() {
+
+    this.dataService.getData(DataType.SESSION).then((sessions) => {
+      if (sessions) {
+        this.sessions = sessions;
+        this.sessions.forEach((s: Session) => {
+          if (!s.id) {
+            s.id = this.findHighestIdSession() + 1;
+          }
+        })
+      }
+    });
+  }
 
   saveData() {
     this.dataService.saveData(DataType.SESSION, this.sessions);

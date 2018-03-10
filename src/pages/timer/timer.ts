@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
+import {VERSION} from '../../models/appConstant';
 
 /**
- * Generated class for the TimerPage page.
+ * Generated class for the InfoPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,13 +13,14 @@ import {NavController, NavParams} from 'ionic-angular';
   selector: 'page-timer',
   templateUrl: 'timer.html',
 })
-export class TimerPage {
+export class InfoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  readonly version: string = VERSION;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TimerPage');
   }
 
 }

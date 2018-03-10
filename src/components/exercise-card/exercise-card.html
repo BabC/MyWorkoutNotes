@@ -1,0 +1,30 @@
+<ion-card>
+  <ion-card-header reorder="false">
+    <ion-avatar item-start>
+      <img src="../../assets/svg/weightlifting.svg">
+    </ion-avatar>
+    <h2>{{exercise.name}}</h2>
+  </ion-card-header>
+
+  <ion-card-content>
+    <div *ngIf="exercise.set">Set: {{exercise.set}}</div>
+    <div *ngIf="exercise.repetition">Rep: {{exercise.repetition}}</div>
+    <div *ngIf="exercise.rest">Rest: {{exercise.rest}}</div>
+  </ion-card-content>
+
+  <ion-row>
+    <ion-col>
+      <button ion-button icon-left clear small (click)="emitEditExercise()">
+        <ion-icon name="md-create"></ion-icon>
+        <div>Edit</div>
+      </button>
+    </ion-col>
+    <ion-col>
+      <button ion-button icon-left clear small (click)="emitDeleteExercise()">
+        <ion-icon name="trash"></ion-icon>
+        <div>Delete</div>
+      </button>
+    </ion-col>
+  </ion-row>
+
+</ion-card>

@@ -1,6 +1,4 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
-import {VERSION} from '../../models/appConstant';
 
 /**
  * Generated class for the InfoPage page.
@@ -11,16 +9,17 @@ import {VERSION} from '../../models/appConstant';
 
 @Component({
   selector: 'page-timer',
-  templateUrl: 'timer.html',
+  templateUrl: 'info.html',
 })
 export class InfoPage {
 
-  readonly version: string = VERSION;
+  readonly appVersion = '0.0.4';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,) {
+  constructor() {
   }
 
   ionViewDidLoad() {
+
   }
 
 }

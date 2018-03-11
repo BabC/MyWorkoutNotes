@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ActionSheetController, AlertController, NavController, NavParams} from 'ionic-angular';
+import {AlertController, NavController, NavParams} from 'ionic-angular';
 import {Exercise} from '../../../models/exercise';
 import {DataProvider} from '../../../providers/data/data';
 import {DataType} from '../../../models/data-type-enum';
@@ -23,7 +23,6 @@ export class ExercisesListPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private alertCtrl: AlertController,
-              private actionSheetCtrl: ActionSheetController,
               private dataService: DataProvider) {
   }
 
@@ -31,6 +30,9 @@ export class ExercisesListPage {
     this.updateData();
   }
 
+  /**
+   * Open a modal and save the new exercise
+   */
   addExercise() {
     let alert = this.alertCtrl.create({
       title: 'Add exercise',
@@ -59,6 +61,9 @@ export class ExercisesListPage {
     alert.present();
   }
 
+  /**
+   * Refresh the list
+   */
   private updateData() {
     this.dataService.getData(DataType.EXERCISE).then((exercises) => {
       if (exercises) {
@@ -67,43 +72,87 @@ export class ExercisesListPage {
     });
   }
 
+  /**
+   * Sort eh exercises by name
+   */
   private sortExercises() {
     this.exercises.sort((a, b) => {
       return a.name < b.name ? -1 : 1;
     });
   }
 
+  /**
+   * Call the data provider to save the list
+   */
   private saveData() {
     this.sortExercises();
     this.dataService.saveData(DataType.EXERCISE, this.exercises);
   }
 
-  showMenu(exercise: Exercise) {
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'Edit the exercise',
+  /**
+   * Edit an exercise
+   * Call the method to apply the edition in all sessions
+   * @param {Exercise} e
+   */
+  editExercise(e: Exercise) {
+    let alert = this.alertCtrl.create({
+      title: 'Edit exercise',
+      inputs: [
+        {
+          name: 'name',
+          value: e.name
+        }
+      ],
       buttons: [
         {
-          text: 'Delete',
-          role: 'destructive',
-          icon: 'trash',
+          text: 'Cancel',
+        },
+        {
+          text: 'Edit',
+          handler: data => {
+            const index = this.exercises.findIndex((eTmp: Exercise) => eTmp.name === e.name);
+            data.name = StringFormat.capitalize(data.name);
+            this.exercises[index] = {
+              name: data.name
+            } as Exercise;
+            this.saveData();
+            this.dataService.editExerciseFromSessions(e, this.exercises[index]);
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  /**
+   * Delete an exercise
+   * Call the method to apply the edition in all sessions
+   * @param {Exercise} e
+   */
+  deleteExercise(e: Exercise) {
+    let alert = this.alertCtrl.create({
+      title: 'Delete ' + e.name,
+      message: 'Do you want to remove this exercise ?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
           handler: () => {
-            const index = this.exercises.indexOf(exercise)
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            const index = this.exercises.indexOf(e)
             if (index >= 0) {
               this.exercises.splice(index, 1);
               this.saveData();
+              this.dataService.removeExerciseFromSessions(e);
             }
           }
         }
       ]
     });
-    actionSheet.present();
-  }
-
-  editExercise(e: Exercise) {
-
-  }
-
-  deleteExercise(e: Exercise) {
-
+    alert.present();
   }
 }

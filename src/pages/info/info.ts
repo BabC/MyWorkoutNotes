@@ -13,7 +13,7 @@ import {Component} from '@angular/core';
 })
 export class InfoPage {
 
-  readonly appVersion = '0.0.4';
+  readonly appVersion = '0.0.5';
 
   constructor() {
   }

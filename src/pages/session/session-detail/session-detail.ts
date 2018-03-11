@@ -115,11 +115,29 @@ export class SessionDetailPage {
    * @param {Exercise} e
    */
   deleteExercise(e: Exercise) {
-    const index = this.session.exercises.indexOf(e);
-    if (index >= 0) {
-      this.session.exercises.splice(index, 1);
-    }
-    this.saveSession();
+    let alert = this.alertCtrl.create({
+      title: 'Remove ' + e.name,
+      message: 'Do you want to remove this exercise ?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          handler: () => {
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            const index = this.session.exercises.indexOf(e);
+            if (index >= 0) {
+              this.session.exercises.splice(index, 1);
+            }
+            this.saveSession();
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   /**

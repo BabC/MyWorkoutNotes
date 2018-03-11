@@ -16,7 +16,7 @@
 <ion-content padding>
   <ion-list>
     <ion-item *ngFor="let e of exercises">
-      <exercise-card [exercise]="e"
+      <exercise-card [exercise]="e" [isSimpleDisplay]="true"
                      (callbackDeleteExercise)="deleteExercise(e)"
                      (callbackEditExercise)="editExercise(e)"></exercise-card>
     </ion-item>

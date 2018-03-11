@@ -1,8 +1,8 @@
 {
-  "name": "MyWorkoutNotes",
+  "name": "My Workout Notes",
   "version": "0.0.5",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "author": "Bastien CHAPELLIER",
+  "homepage": "http://bastienchapellier.com/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",

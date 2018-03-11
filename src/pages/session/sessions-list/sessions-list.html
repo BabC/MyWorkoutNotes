@@ -1,0 +1,24 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Sessions</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <button ion-item *ngFor="let s of sessions; let i = index" [attr.data-index]="i" (click)="viewSession(s)">
+      <ion-label>{{s?.name}}</ion-label>
+    </button>
+  </ion-list>
+  <ion-item *ngIf="sessions?.length===0">
+    No session
+  </ion-item>
+  <ion-fab bottom right>
+    <button ion-fab (click)="addNewSession()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

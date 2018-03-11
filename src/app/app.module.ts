@@ -7,39 +7,50 @@ import {TabsPage} from '../pages/tabs/tabs';
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
-import {ExercisesPage} from '../pages/exercises/exercises';
-import {SessionsListPage} from '../pages/sessions-list/sessions-list';
-import {TimerPage} from '../pages/timer/timer';
-import {SessionDetailPage} from '../pages/session-detail/session-detail';
-import { DataProvider } from '../providers/data/data';
+import {ExercisesListPage} from '../pages/exercise/exercises-list/exercises-list';
+import {SessionsListPage} from '../pages/session/sessions-list/sessions-list';
+import {InfoPage} from '../pages/info/info';
+import {SessionDetailPage} from '../pages/session/session-detail/session-detail';
+import {DataProvider} from '../providers/data/data';
+import {IonicStorageModule} from '@ionic/storage';
+import {AddExercisePage} from '../pages/add-exercise/add-exercise'
+import {ComponentsModule} from "../components/components.module";
+import {AppVersion} from "@ionic-native/app-version";
 
 @NgModule({
   declarations: [
     MyApp,
     TabsPage,
     SessionsListPage,
-    ExercisesPage,
-    TimerPage,
-    SessionDetailPage
+    ExercisesListPage,
+    InfoPage,
+    SessionDetailPage,
+    AddExercisePage,
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {
+      tabsHideOnSubPages: true,
+    }),
+    IonicStorageModule.forRoot(),
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     TabsPage,
     SessionsListPage,
-    ExercisesPage,
-    TimerPage,
-    SessionDetailPage
+    ExercisesListPage,
+    InfoPage,
+    SessionDetailPage,
+    AddExercisePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DataProvider
+    DataProvider,
+    AppVersion
   ]
 })
 export class AppModule {

@@ -19,7 +19,7 @@
     <ion-input [(ngModel)]="session.name" (ngModelChange)="onChangeName($event)"></ion-input>
   </ion-item>
   <ion-list reorder="true" (ionItemReorder)="reorderItems($event)">
-    <ion-item *ngFor="let e of session.exercises">
+    <ion-item class="exercise-list-item" *ngFor="let e of session.exercises">
       <exercise-card [exercise]="e"
                      (callbackDeleteExercise)="deleteExercise(e)"
                      (callbackEditExercise)="editExercise(e)"></exercise-card>

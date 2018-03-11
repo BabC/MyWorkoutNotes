@@ -1,5 +1,5 @@
 <ion-card>
-  <ion-card-header reorder="false">
+  <ion-card-header>
     <ion-avatar item-start>
       <img src="./assets/svg/weightlifting.svg">
     </ion-avatar>
@@ -7,9 +7,9 @@
   </ion-card-header>
 
   <ion-card-content>
-    <div *ngIf="exercise.set">Set: {{exercise.set}}</div>
-    <div *ngIf="exercise.repetition">Rep: {{exercise.repetition}}</div>
-    <div *ngIf="exercise.rest">Rest: {{exercise.rest}}</div>
+    <span *ngIf="exercise.set">Set: {{exercise.set}}</span>
+    <span *ngIf="exercise.repetition">Rep: {{exercise.repetition}}</span>
+    <span *ngIf="exercise.rest">Rest: {{exercise.rest}}</span>
   </ion-card-content>
 
   <ion-row>

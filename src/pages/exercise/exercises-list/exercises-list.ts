@@ -98,4 +98,12 @@ export class ExercisesListPage {
     });
     actionSheet.present();
   }
+
+  editExercise(e: Exercise) {
+
+  }
+
+  deleteExercise(e: Exercise) {
+
+  }
 }

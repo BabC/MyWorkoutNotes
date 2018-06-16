@@ -37,6 +37,15 @@ export class SessionDetailPage {
   ionViewDidLoad() {
     this.session = this.navParams.get('session');
     this.deleteCallback = this.navParams.get('deleteCallback');
+
+    // Fix 0.0.5 to 0.0.6
+    this.session.exercises.forEach(e => {
+      const timeSplit = e.rest.split(':');
+      if (timeSplit.length == 2) {
+        e.rest = (60 * (+timeSplit[0]) + (+timeSplit[1])).toString();
+        this.saveSession();
+      }
+    });
   }
 
   /**

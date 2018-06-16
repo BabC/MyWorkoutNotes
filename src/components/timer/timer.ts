@@ -31,7 +31,7 @@ export class TimerComponent {
   startTimer() {
     this.isPause = false;
     this.timeInterval = setInterval(() => {
-      if (this.time === 0) {
+      if (this.time <= 0) {
         this.resetTimer();
       } else {
         this.time--;
@@ -48,5 +48,4 @@ export class TimerComponent {
     clearInterval(this.timeInterval);
     this.emitStopTimer.emit();
   }
-
 }

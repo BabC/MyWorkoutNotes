@@ -1,0 +1,10 @@
+<ion-card *ngIf="exercise">
+  <ion-card-header>
+    {{exercise.name}}
+  </ion-card-header>
+  <ion-card-content>
+    <div>Set number: {{exercise.set}}</div>
+    <div *ngIf="exercise.repetition">Rep: {{exercise.repetition}}</div>
+  </ion-card-content>
+</ion-card>
+

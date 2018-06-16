@@ -49,7 +49,7 @@ export class AddExercisePage {
     }
   }
 
-  AddExercise() {
+  addExercise() {
     const exercise: Exercise = {
       name: this.name,
       repetition: this.repetition,

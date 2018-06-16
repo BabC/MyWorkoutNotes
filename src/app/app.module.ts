@@ -16,6 +16,8 @@ import {IonicStorageModule} from '@ionic/storage';
 import {AddExercisePage} from '../pages/add-exercise/add-exercise'
 import {ComponentsModule} from "../components/components.module";
 import {AppVersion} from "@ionic-native/app-version";
+import {TrainingPage} from "../pages/training/training";
+import {ChartsModule} from "ng2-charts";
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import {AppVersion} from "@ionic-native/app-version";
     InfoPage,
     SessionDetailPage,
     AddExercisePage,
+    TrainingPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import {AppVersion} from "@ionic-native/app-version";
       tabsHideOnSubPages: true,
     }),
     IonicStorageModule.forRoot(),
-    ComponentsModule
+    ComponentsModule,
+    ChartsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -43,7 +47,8 @@ import {AppVersion} from "@ionic-native/app-version";
     ExercisesListPage,
     InfoPage,
     SessionDetailPage,
-    AddExercisePage
+    AddExercisePage,
+    TrainingPage
   ],
   providers: [
     StatusBar,

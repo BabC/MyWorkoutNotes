@@ -29,11 +29,11 @@
     <button ion-fab>
       <ion-icon name="ios-settings"></ion-icon>
     </button>
-    <!--    <ion-fab-list side="top">
-          <button ion-fab>
-            <ion-icon name="play"></ion-icon>
-          </button>
-        </ion-fab-list>-->
+    <ion-fab-list side="top">
+      <button ion-fab (click)="startSession()">
+        <ion-icon name="play"></ion-icon>
+      </button>
+    </ion-fab-list>
     <ion-fab-list side="left">
       <button ion-fab (click)="deleteSession()">
         <ion-icon name="trash"></ion-icon>

@@ -1,0 +1,7 @@
+<div padding class="timer-container">
+  <div class="time-label">Time to rest :</div>
+  <div class="time-seconds">{{time}}</div>
+  <button ion-button (click)="startTimer()" *ngIf="isPause">Start</button>
+  <button ion-button (click)="pauseTimer()" *ngIf="!isPause">Pause</button>
+  <button ion-button (click)="resetTimer()">Skip</button>
+</div>

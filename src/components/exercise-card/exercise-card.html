@@ -16,7 +16,7 @@
     <h2>{{exercise.name}}</h2>
   </ion-card-content>
 
-  <ion-row>
+  <ion-row *ngIf="isEditable">
     <ion-col>
       <button ion-button icon-left clear small (click)="emitDeleteExercise()">
         <ion-icon name="trash"></ion-icon>

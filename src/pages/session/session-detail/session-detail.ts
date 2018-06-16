@@ -5,6 +5,7 @@ import {DataProvider} from '../../../providers/data/data';
 import {DataType} from '../../../models/data-type-enum';
 import {AddExercisePage} from "../../add-exercise/add-exercise";
 import {Exercise} from "../../../models/exercise";
+import {TrainingPage} from "../../training/training";
 
 /**
  * Generated class for the SessionDetailPage page.
@@ -44,6 +45,15 @@ export class SessionDetailPage {
    */
   onChangeName($event) {
     this.saveSession();
+  }
+
+  /**
+   * Start the session
+   */
+  startSession() {
+    this.navCtrl.push(TrainingPage, {
+      session: this.session,
+    });
   }
 
   /**
@@ -166,4 +176,5 @@ export class SessionDetailPage {
       }
     });
   }
+
 }

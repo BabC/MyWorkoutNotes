@@ -19,6 +19,9 @@ export class ExerciseCardComponent {
   @Input()
   isSimpleDisplay: boolean = false;
 
+  @Input()
+  isEditable: boolean = true;
+
   @Output('callbackDeleteExercise')
   callbackDeleteExercise = new EventEmitter();
 

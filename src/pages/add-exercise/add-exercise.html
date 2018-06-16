@@ -29,13 +29,12 @@
     <ion-input min="0" type="number" [(ngModel)]="set"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label color="primary" floating>Time to rest (optional)</ion-label>
-    <ion-datetime displayFormat="HH:mm" hourValues="0,1,2,3,4,5,6,7,8,9,10,15" minuteValues="0,30"
-                  doneText="Add" cancelText="Cancel" [(ngModel)]="rest"></ion-datetime>
+    <ion-label color="primary" floating>Time to rest in seconds (optional)</ion-label>
+    <ion-input min="0" type="number" [(ngModel)]="rest"></ion-input>
   </ion-item>
 </ion-content>
 <ion-footer padding>
-  <button ion-button full (click)="AddExercise()"
+  <button ion-button full (click)="addExercise()"
           [disabled]="!isValidExercise()">Add to session
   </button>
 </ion-footer>
